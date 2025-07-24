@@ -1,0 +1,18 @@
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Xcode
+build/
+DerivedData/
+xcuserdata/
+
+# macOS
+.DS_Store
+._*
+
+# IDE files
+.vscode/
+
+# Other
+.claude
