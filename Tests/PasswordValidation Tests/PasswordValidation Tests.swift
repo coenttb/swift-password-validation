@@ -5,13 +5,14 @@
 //  Created by Coen ten Thije Boonkkamp on 23/07/2025.
 //
 
-@testable import Coenttb_Database
+@testable import PasswordValidation
 import Testing
 import Dependencies
 import DependenciesTestSupport
 
 @Suite(
     "PasswordValidation Tests",
+    .dependency(\.locale, .english),
     .dependency(\.passwordValidation, .default)
 )
 struct PasswordValidationTests {
