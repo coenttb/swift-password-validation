@@ -27,7 +27,8 @@ let package = Package(
         .library(name: .passwordValidation, targets: [.passwordValidation]),
     ],
     dependencies: [
-        .package(url: "https://github.com/coenttb/swift-translating", from: "0.0.1")
+        .package(url: "https://github.com/coenttb/swift-translating", from: "0.0.1"),
+        .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.9.2"),
     ],
     targets: [
         .target(
