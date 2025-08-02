@@ -12,6 +12,8 @@ extension Target.Dependency {
 
 extension Target.Dependency {
     static var translating: Self { .product(name: "Translating", package: "swift-translating") }
+    static var dependencies: Self { .product(name: "Dependencies", package: "swift-dependencies") }
+    static var dependenciesTestSupport: Self { .product(name: "DependenciesTestSupport", package: "swift-dependencies") }
 }
 
 let package = Package(
@@ -28,19 +30,21 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/coenttb/swift-translating", from: "0.0.1"),
-        .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.9.2"),
+        .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.9.0")
     ],
     targets: [
         .target(
             name: .passwordValidation,
             dependencies: [
-                .translating
+                .translating,
+                .dependencies
             ]
         ),
         .testTarget(
             name: .passwordValidation.tests,
             dependencies: [
                 .passwordValidation,
+                .dependenciesTestSupport
             ]
         ),
     ]
