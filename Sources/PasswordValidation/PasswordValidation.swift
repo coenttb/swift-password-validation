@@ -23,6 +23,7 @@ public struct PasswordValidation: Sendable {
     /// - Parameter password: The password to validate
     /// - Returns: `true` if the password is valid
     /// - Throws: A ``PasswordValidation/Error`` if validation fails
+    
     public var validate: @Sendable (_ password: String) throws -> Bool
 
     /// Creates a new password validator with custom validation logic.
@@ -30,6 +31,12 @@ public struct PasswordValidation: Sendable {
     /// - Parameter validate: A closure that defines the validation rules
     public init(validate: @Sendable @escaping (_: String) throws -> Bool) {
         self.validate = validate
+    }
+}
+
+extension PasswordValidation {
+    public func callAsFunction(_ password: String) throws -> Bool {
+        try self.validate(password)
     }
 }
 
