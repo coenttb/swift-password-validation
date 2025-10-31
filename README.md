@@ -1,19 +1,21 @@
-# PasswordValidation
+# swift-password-validation
 
-A flexible and secure password validation library for Swift applications.
+[![CI](https://github.com/coenttb/swift-password-validation/workflows/CI/badge.svg)](https://github.com/coenttb/swift-password-validation/actions/workflows/ci.yml)
+![Development Status](https://img.shields.io/badge/status-active--development-blue.svg)
+
+Password validation library for Swift with composable rules and localized error messages.
 
 ## Overview
 
-PasswordValidation provides a composable approach to password validation in Swift. It offers predefined validation rules while allowing custom validation logic to be easily integrated, making it perfect for applications that need robust password security.
+PasswordValidation provides type-safe password validation in Swift. It includes predefined validation rules and supports custom validation logic through dependency injection.
 
 ## Features
 
-- ✅ **Predefined Validators**: Ready-to-use validation rules for common scenarios
-- ✅ **Custom Validation**: Create your own validation logic with ease
-- ✅ **Dependencies Integration**: Built-in support for the Dependencies library
-- ✅ **Localized Error Messages**: User-friendly error descriptions
-- ✅ **Comprehensive Testing**: Simple and default validators for different environments
-- ✅ **Swift Concurrency**: Full `Sendable` support for modern Swift apps
+- Predefined validators for common password requirements
+- Custom validation logic via closable composition
+- Dependencies library integration for testability
+- Localized error messages in English and Dutch
+- Sendable conformance for Swift concurrency
 
 ## Installation
 
@@ -64,40 +66,40 @@ import PasswordValidation
 
 struct LoginService {
     @Dependency(\.passwordValidation) var passwordValidation
-    
+
     func validateUserPassword(_ password: String) throws -> Bool {
         return try passwordValidation.validate(password)
     }
 }
 ```
 
-## Predefined Validators
+## Usage Examples
 
 ### Default Validator
 
-The `default` validator implements comprehensive security requirements:
+The `default` validator implements standard security requirements:
 
-- **Length**: 8-64 characters
-- **Uppercase**: At least one uppercase letter (A-Z)
-- **Lowercase**: At least one lowercase letter (a-z)
-- **Digits**: At least one digit (0-9)
-- **Special Characters**: At least one special character (`!&^%$#@()/`)
+- Length: 8-64 characters
+- Uppercase: At least one uppercase letter (A-Z)
+- Lowercase: At least one lowercase letter (a-z)
+- Digits: At least one digit (0-9)
+- Special Characters: At least one special character (`!&^%$#@()/`)
 
 ```swift
 let validator = PasswordValidation.default
-try validator.validate("MySecurePass123!") // ✅ Valid
+try validator.validate("MySecurePass123!") // Returns true
 ```
 
 ### Simple Validator
 
-The `simple` validator has minimal requirements (4+ characters) and is useful for testing:
+The `simple` validator requires only 4+ characters:
 
 ```swift
 let validator = PasswordValidation.simple
-try validator.validate("test") // ✅ Valid
+try validator.validate("test") // Returns true
 ```
 
-## Custom Validation
+### Custom Validation
 
 Create your own validation rules:
 
@@ -106,16 +108,16 @@ let customValidator = PasswordValidation { password in
     guard password.count >= 6 else {
         throw PasswordValidation.Error.tooShort(minLength: 6)
     }
-    
+
     guard !password.lowercased().contains("password") else {
         throw PasswordValidation.Error.missingSpecialCharacter
     }
-    
+
     return true
 }
 ```
 
-## Error Handling
+### Error Handling
 
 The library provides specific error types for different validation failures:
 
@@ -133,40 +135,24 @@ do {
 }
 ```
 
-## Available Errors
+### Available Errors
 
 - `tooShort(minLength: Int)` - Password is shorter than required
 - `tooLong(maxLength: Int)` - Password exceeds maximum length
 - `missingUppercase` - No uppercase letters found
-- `missingLowercase` - No lowercase letters found  
+- `missingLowercase` - No lowercase letters found
 - `missingDigit` - No digits found
 - `missingSpecialCharacter` - No special characters found
 
-## Documentation
+## Related Packages
 
-For comprehensive documentation including advanced usage examples, visit the [DocC documentation](Sources/PasswordValidation/PasswordValidation.docc/PasswordValidation.md).
-
-## Dependencies
-
-This library depends on:
-
-- [swift-dependencies](https://github.com/pointfreeco/swift-dependencies) - For dependency injection
-- [swift-translating](https://github.com/coenttb/swift-translating) - For localized error messages
-
-## Feedback is much appreciated!
-
-If you're working on your own Swift project, feel free to learn, fork, and contribute.
-
-Got thoughts? Found something you love? Something you hate? Let me know! Your feedback helps make this project better for everyone. Open an issue or start a discussion—I'm all ears.
-
-> [Subscribe to my newsletter](http://coenttb.com/en/newsletter/subscribe)
->
-> [Follow me on X](http://x.com/coenttb)
-> 
-> [Link on Linkedin](https://www.linkedin.com/in/tenthijeboonkkamp)
+- [swift-translating](https://github.com/coenttb/swift-translating) - A Swift package for inline translations.
+- [swift-dependencies](https://github.com/pointfreeco/swift-dependencies) - A dependency management library inspired by SwiftUI's "environment."
 
 ## License
 
-This project is licensed under the **APACHE 2.0. License**.  
-You are free to use, modify, and distribute this project under the terms of the APACHE 2.0. License.  
-For full details, please refer to the [LICENSE](LICENSE) file.
+This project is licensed under the Apache 2.0 License. See [LICENSE](LICENSE) for details.
+
+## Contributing
+
+Contributions are welcome. Please open an issue or submit a pull request.
