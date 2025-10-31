@@ -1,5 +1,5 @@
 {
-  "originHash" : "3ef78ff0cfec3bfe6701b21d36574ed06c16d2259630dc9deb97a790e99f4a05",
+  "originHash" : "064a0aafdfd6edf09f01e50af60431736df8848c7a90e8ec4f926001dcd72dfa",
   "pins" : [
     {
       "identity" : "combine-schedulers",
@@ -51,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/coenttb/swift-translating",
       "state" : {
-        "revision" : "21cf0e45098a9c66faa5ae80215a42c7672fe3d0",
-        "version" : "0.0.1"
+        "revision" : "579ab6bbf7df46428335c618278cb7d9d3d4c897",
+        "version" : "0.3.0"
       }
     },
     {
