@@ -12,7 +12,7 @@ PasswordValidation provides type-safe password validation in Swift. It includes 
 ## Features
 
 - Predefined validators for common password requirements
-- Custom validation logic via closable composition
+- Custom validation logic via closure-based composition
 - Dependencies library integration for testability
 - Localized error messages in English and Dutch
 - Sendable conformance for Swift concurrency
@@ -47,7 +47,7 @@ Then add `PasswordValidation` to your target dependencies:
 ```swift
 import PasswordValidation
 
-// Use the comprehensive validator
+// Use the default validator
 let validator = PasswordValidation.default
 
 do {
