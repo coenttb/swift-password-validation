@@ -146,8 +146,18 @@ do {
 
 ## Related Packages
 
-- [swift-translating](https://github.com/coenttb/swift-translating) - A Swift package for inline translations.
-- [swift-dependencies](https://github.com/pointfreeco/swift-dependencies) - A dependency management library inspired by SwiftUI's "environment."
+### Dependencies
+
+- [swift-translating](https://github.com/coenttb/swift-translating): A Swift package for inline translations.
+
+### Used By
+
+- [coenttb-web](https://github.com/coenttb/coenttb-web): A Swift package with tools for web development building on swift-web.
+- [swift-server-foundation](https://github.com/coenttb/swift-server-foundation): A Swift package with tools to simplify server development.
+
+### Third-Party Dependencies
+
+- [pointfreeco/swift-dependencies](https://github.com/pointfreeco/swift-dependencies): A dependency management library for controlling dependencies in Swift.
 
 ## License
 
